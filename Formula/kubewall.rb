@@ -37,4 +37,11 @@ class Kubewall < Formula
   test do
     system "#{bin}/kubewall -v"
   end
+
+  service do
+    run [opt_bin/"kubewall","--no-open-browser"]
+    keep_alive true
+    log_path var/"log/kubewall.log"
+    error_log_path var/"log/kubewall.log"
+  end
 end
